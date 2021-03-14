@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:icon="@drawable/ic_baseline_language_24"
+        android:title="@string/languageSelection">
+      <CheckBoxPreference
+          android:title="@string/English"
+          android:key="english"/>
+
+        <CheckBoxPreference
+            android:title="@string/Spanish"
+            android:key="spanish"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/moreOptions">
+        <SwitchPreference
+            android:icon="@drawable/ic_switchsvg"
+            android:title="Light Mode"
+            android:key="mode"/>
+        <Preference
+            android:icon="@drawable/ic_ratesvg"
+            android:title="@string/RatingApp"
+            android:key="rate"/>
+
+    </PreferenceCategory>
+</PreferenceScreen>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/reviews"
+        android:title="Reviews"
+        android:icon="@drawable/ic_feedbacksvg"/>
+
+    <item
+        android:id="@+id/recommendations"
+        android:title="Recommendations"
+        android:icon="@drawable/ic_recommendationsvg"/>
+    <item
+        android:id="@+id/credits"
+        android:title="Credits"
+        android:icon="@drawable/ic_filmimagessvg"/>
+
+
+</menu>

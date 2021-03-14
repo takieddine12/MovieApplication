@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="settingsIconColor">#FFFFFF</color>
+    <color name="progressColor">#ffffff</color>
+    <color name="settingslayoutcolors">#ffffff</color>
+    <color name="checkMoreColor">#000000</color>
+    <color name="linkSvgColor">#ffffff</color>
+    <color name="viewColor">#ffffff</color>
+    <color name="searchViewBoxColor">#000000</color>
+    <color name="iconscolor">#3266a8</color>
+    <color name="boxColor">#3266a8</color>
+    <color name='linkIconColor'>#ffffff</color>
+    <color name="dialogTitle">#000000</color>
+</resources>

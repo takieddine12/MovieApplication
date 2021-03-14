@@ -1,0 +1,171 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+
+
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "taki.eddine.myapplication"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+
+    dataBinding {
+        enabled true
+    }
+    viewBinding {
+        enabled true
+    }
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    buildTypes {
+
+        debug {
+            buildConfigField 'String' , "PopularMovieUrl" , Popular_Movies_Url
+            buildConfigField 'String' , "MoviesApiKey" , api_key
+        }
+        release {
+
+            buildConfigField 'String' , "PopularMovieUrl" , Popular_Movies_Url
+            buildConfigField 'String' , "MoviesApiKey" , api_key
+
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+
+    //Rating App Library
+    implementation 'com.github.sujithkanna:smileyrating:2.0.0'
+
+    //Circular Image Library
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+
+    // Java language implementation
+    implementation "androidx.preference:preference-ktx:1.1.1"
+
+    // optional - RxJava support for Room
+    implementation "androidx.room:room-rxjava2:2.2.6"
+
+    // AlertDialog Library
+    implementation 'com.github.chnouman:AwesomeDialog:1.0.5'
+
+    //HILT ANDROID
+
+    implementation fileTree(dir: 'F:\\projects\\New folder\\MoviesApp-master\\app\\libs', include: ['*.aar', '*.jar'], exclude: [])
+    implementation fileTree(dir: 'C:\\Users\\BreezyWeezy\\Desktop\\New folder', include: ['*.aar', '*.jar'], exclude: [])
+    implementation files('libs\\YouTubeAndroidPlayerApi.jar')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "com.google.dagger:hilt-android:2.31-alpha"
+    kapt  "com.google.dagger:hilt-android-compiler:2.31-alpha"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
+    kapt  "androidx.hilt:hilt-compiler:1.0.0-alpha03"
+
+    // Carousel Library
+    implementation 'com.github.jama5262:CarouselView:1.1.0'
+
+    // Shimmer Library
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
+
+    //Custom Type Animation Library
+    implementation 'com.github.hajiyevelnur92:intentanimation:1.0'
+
+    //Bottombar Library
+    implementation 'nl.joery.animatedbottombar:library:1.0.9'
+
+    //Android Shape ImageView
+    implementation 'com.github.siyamed:android-shape-imageview:0.9.3@aar'
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    ///---Gson
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
+    //coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1'
+
+    //ProgressBar Library
+    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
+    
+    //Timber
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    // Kotlin
+    implementation "androidx.activity:activity-ktx:1.1.0"
+
+    ///Dexing Library
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+
+    //---Retrofit ( Http Library )
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+
+    //--RecyclerView
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+
+    ///---ViewModel + LiveData
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    kapt "androidx.lifecycle:lifecycle-common-java8:2.2.0"
+
+    ///--Design Library
+    implementation 'com.google.android.material:material:1.3.0-rc01'
+
+
+    //--Picasso Library
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //--Http Loggin Inteceptor
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.6.0'
+
+
+    //Room db
+    implementation "androidx.room:room-runtime:2.2.6"
+    kapt "androidx.room:room-compiler:2.2.6"
+
+
+    //rxjava adapter
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.5.0"
+    implementation("io.reactivex.rxjava2:rxkotlin:2.2.0")
+
+    ///---JUnit
+    testImplementation 'junit:junit:4.13.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    def paging_version = "2.1.2"
+
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version" // For Kotlin use paging-runtime-ktx
+    // optional - RxJava support
+    implementation "androidx.paging:paging-rxjava2-ktx:$paging_version" // For Kotlin use paging-rxjava2-ktx
+
+}

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "352323987095",
+    "firebase_url": "https://moviesfirebase-426eb.firebaseio.com",
+    "project_id": "moviesfirebase-426eb",
+    "storage_bucket": "moviesfirebase-426eb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:352323987095:android:645fbf1f230e6ee9c5abd2",
+        "android_client_info": {
+          "package_name": "taki.eddine.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "352323987095-kr53mkhsf1e5cm76q718ppesqp1jj2la.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgLp8egdlsXLF1NeGABqD8vRvBfvDQpCc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "352323987095-kr53mkhsf1e5cm76q718ppesqp1jj2la.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

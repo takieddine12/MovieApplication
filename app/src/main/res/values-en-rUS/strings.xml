@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">IMovie</string>
+    <string name="popularMovies">Popular</string>
+    <string name="popular">Popular</string>
+    <string name="nowplaying">Now Playing</string>
+    <string name="toprated">Top Rated</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="facebook_app_id" translatable="false">237525440775375</string>
+    <string name="fb_login_protocol_scheme" translatable="false">d698350098bc118653135606e98fdc33</string>
+    <string name="success">Successfully Logged Out</string>
+    <string name="notification">Notification</string>
+    <string name="info">Info</string>
+    <string name="version_1_0_0">Version 1.0.0</string>
+    <string name="setting">Setting</string>
+    <string name="register_an_account">Register An Account</string>
+    <string name="forgot_password">Forgot password</string>
+    <string name="login">Login</string>
+    <string name="google_gmail">Google Gmail</string>
+    <string name="log_out">Log Out</string>
+    <string name="vote_average">average vote</string>
+    <string name="language">Language</string>
+    <string name="budget">budget</string>
+    <string name="popularity">popularity</string>
+    <string name="register">Register</string>
+    <string name="login_here">"Login "</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="imovie">Flexify</string>
+    <string name="now_playing">Now Playing</string>
+    <string name="popular_movies">Popular Movies</string>
+    <string name="top_rated">Top Rated</string>
+    <string name="upcoming_movies">Upcoming Movies</string>
+    <string name="languageSelection">Language Selection</string>
+    <string name="English">English</string>
+    <string name="Spanish">Spanish</string>
+    <string name="moreOptions">More Options</string>
+    <string name="RatingApp">Rate App</string>
+    <string name="CheckMore">Check More</string>
+    <string name="MoviesReviews">Reviews</string>
+    <string name="MoviesVideos">Videos</string>
+    <string name="MoviesRecommendations">Recommendations</string>
+    <string name="MoviesCredits">Credits</string>
+    <string name="darkmode">Dark Mode</string>
+    <string name="lightmode">Light Mode</string>
+    <string name="best_movies">Best Movies</string>
+    <string name="no_reviews_found">No Reviews Found..</string>
+    <string name="no_credits_found">No Credits Found..</string>
+    <string name="no_recommendations_found">No recommendations Found..</string>
+    <string name="read_more">Read More</string>
+    <string name="createdAt">Created At</string>
+    <string name="updatedAt">Updated At</string>
+    <string name="character">Character</string>
+    <string name="known_for">Known For</string>
+    <string name="flexify">Flexify</string>
+    <string name="moviesaved">Movie Saved..</string>
+    <string name="deleteall">Deleting All Movies!</string>
+    <string name="confirmationdeletion">Are you sure you want to delete all movies!</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="no_movies_added">No Movies Added..</string>
+    <string name="deletionsuccess">All Movies Successfully Deleted</string>
+</resources>
