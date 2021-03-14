@@ -7,11 +7,13 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
+import androidx.paging.RxPagedListBuilder
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.reactivex.Completable
-import io.reactivex.Observable
+import io.reactivex.*
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.functions.Function
+import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.flow.MutableStateFlow
 import taki.eddine.myapplication.datamodels.DataModel
 import taki.eddine.myapplication.datamodels.MovieResultItem
@@ -23,6 +25,7 @@ import taki.eddine.myapplication.datamodels.extramodels.recommendations.Recommen
 import taki.eddine.myapplication.datamodels.extramodels.slider.SliderResponse
 import taki.eddine.myapplication.datamodels.extramodels.slider.SliderResultItem
 import taki.eddine.myapplication.datamodels.extramodels.videos.VideoResponse
+import java.util.concurrent.Executors
 import javax.inject.Inject
 
 
@@ -37,10 +40,14 @@ class MainViewModel @Inject constructor(
     fun getPopularMoviesInfo(languageCode: String?): MutableStateFlow<UiStates> {
         _stateFlow.value = UiStates.LOADING
         try {
-            val data = LivePagedListBuilder(
+            val rxData = RxPagedListBuilder(
                     repository.providePopularMovies(languageCode, compositeDisposable), getBuilderConfig())
-                    .setBoundaryCallback(repository.getPopularBoundaryCallback()).build()
-            _stateFlow.value = UiStates.SUCCESS(data)
+                    .setBoundaryCallback(repository.getPopularBoundaryCallback())
+                    .setFetchScheduler(Schedulers.io())
+                    .setNotifyScheduler(AndroidSchedulers.mainThread())
+                    .buildFlowable(BackpressureStrategy.BUFFER)
+
+            _stateFlow.value = UiStates.SUCCESS(rxData)
 
         }catch (ex: Exception){
             _stateFlow.value = UiStates.ERROR(ex.message!!)
@@ -51,10 +58,13 @@ class MainViewModel @Inject constructor(
     fun getTopRatedMoviesInfo(languageCode: String?): MutableStateFlow<UiStates>{
         _stateFlow.value = UiStates.LOADING
         try {
-            val data =  LivePagedListBuilder(
+            val rxData = RxPagedListBuilder(
                     repository.provideTopRated(languageCode, compositeDisposable), getBuilderConfig())
-                    .setBoundaryCallback(repository.getTopRatedBoundaryCallback()).build()
-            _stateFlow.value = UiStates.SUCCESS(data)
+                    .setBoundaryCallback(repository.getTopRatedBoundaryCallback())
+                    .setFetchScheduler(Schedulers.io())
+                    .setNotifyScheduler(AndroidSchedulers.mainThread())
+                    .buildFlowable(BackpressureStrategy.BUFFER)
+            _stateFlow.value = UiStates.SUCCESS(rxData)
         }catch (ex: Exception){
             _stateFlow.value = UiStates.ERROR(ex.message!!)
         }
@@ -64,12 +74,19 @@ class MainViewModel @Inject constructor(
     fun getUpcomingMoviesInfo(languageCode: String?): MutableStateFlow<UiStates> {
         _stateFlow.value = UiStates.LOADING
         try {
-
-            val data =  LivePagedListBuilder(
+            val rxData = RxPagedListBuilder(
                     repository.provideUpcomingMovies(languageCode, compositeDisposable), getBuilderConfig())
-                    .setBoundaryCallback(repository.getUpcomingBoundaryCallback()).build()
+                    .setBoundaryCallback(repository.getUpcomingBoundaryCallback())
+                    .setFetchScheduler(Schedulers.io())
+                    .setNotifyScheduler(AndroidSchedulers.mainThread())
+                    .buildFlowable(BackpressureStrategy.BUFFER)
 
-            _stateFlow.value = UiStates.SUCCESS(data)
+            /// Returning LivePagedlistBuilder for Livedata
+//            val data =  LivePagedListBuilder(
+//                    repository.provideUpcomingMovies(languageCode, compositeDisposable), getBuilderConfig())
+//                    .setBoundaryCallback(repository.getUpcomingBoundaryCallback()).build()
+
+            _stateFlow.value = UiStates.SUCCESS(rxData)
         }catch (ex: Exception){
             _stateFlow.value = UiStates.ERROR(ex.message!!)
 
@@ -80,11 +97,17 @@ class MainViewModel @Inject constructor(
     fun getNowPlayingMoviesInfo(languageCode: String?): MutableStateFlow<UiStates>{
         _stateFlow.value = UiStates.LOADING
         try {
-
-            val data =  LivePagedListBuilder(
+            val rxData  = RxPagedListBuilder(
                     repository.provideNowPlaying(languageCode, compositeDisposable), getBuilderConfig())
-                    .setBoundaryCallback(repository.getNowPlayingBoundaryCallback()).build()
-            _stateFlow.value = UiStates.SUCCESS(data)
+                    .setBoundaryCallback(repository.getNowPlayingBoundaryCallback())
+                    .setFetchScheduler(Schedulers.io())
+                    .setNotifyScheduler(AndroidSchedulers.mainThread())
+                    .buildFlowable(BackpressureStrategy.BUFFER)
+
+//                   val data =  LivePagedListBuilder(
+//                    repository.provideNowPlaying(languageCode, compositeDisposable), getBuilderConfig())
+//                    .setBoundaryCallback(repository.getNowPlayingBoundaryCallback()).build()
+            _stateFlow.value = UiStates.SUCCESS(rxData)
         }catch (ex: Exception){
             _stateFlow.value = UiStates.ERROR(ex.message!!)
 
@@ -151,7 +174,7 @@ class MainViewModel @Inject constructor(
 
     sealed class UiStates {
         object LOADING : UiStates()
-        data class SUCCESS(var data: LiveData<PagedList<MovieResultItem?>>) : UiStates()
+        data class SUCCESS(var data: Flowable<PagedList<MovieResultItem?>>) : UiStates()
         data class ERROR(var exception: String) : UiStates()
         object EMPTY : UiStates()
     }

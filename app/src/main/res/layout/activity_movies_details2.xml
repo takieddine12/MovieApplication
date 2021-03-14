@@ -183,6 +183,7 @@
                             android:id="@+id/movieGenre"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
+                            android:fontFamily="@font/rubik_medium"
                             android:layout_marginStart="10dp"
                             android:layout_marginEnd="10dp"
                             android:textSize="19sp"

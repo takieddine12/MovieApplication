@@ -40,7 +40,7 @@ import java.util.*
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
+    private lateinit var adapter: MoviesPagerAdapter
     private val mainViewModel: MainViewModel? by viewModels()
     private var compositeDisposable: CompositeDisposable? = null
     private var activityMainBinding: ActivityMainBinding? = null
@@ -53,26 +53,27 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         compositeDisposable = CompositeDisposable()
+        Timber.d("onCreate is called..")
 
         activityMainBinding!!.refreshImage.setOnClickListener {
             if(Extras.isNetworkConnected(this)){
                 Intent(this@MainActivity, MainActivity::class.java).apply {
-                    flags = Intent.FLAG_ACTIVITY_NO_ANIMATION
+                   // flags = Intent.FLAG_ACTIVITY_NO_ANIMATION
                     startActivity(this)
-                    //customType(this@MainActivity,"fadein-to-fadeout")
+                    customType(this@MainActivity,"fadein-to-fadeout")
                 }
             }
         }
         activityMainBinding!!.bestImg.setOnClickListener {
             Intent(this@MainActivity, FavDetailsActivity::class.java).apply {
                 startActivity(this)
-                //customType(this@MainActivity,"fadein-to-fadeout")
+                customType(this@MainActivity,"fadein-to-fadeout")
             }
         }
         activityMainBinding!!.settingsImg.setOnClickListener {
             Intent(this@MainActivity, MovieSettingsActivity::class.java).apply {
                 startActivity(this)
-               // customType(this@MainActivity,"fadein-to-fadeout")
+                customType(this@MainActivity,"fadein-to-fadeout")
             }
 
         }
@@ -83,7 +84,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initViewPager() {
-        val adapter = MoviesPagerAdapter(supportFragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT)
+        adapter = MoviesPagerAdapter(supportFragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT)
         activityMainBinding!!.viewpager.offscreenPageLimit = 4
         activityMainBinding!!.viewpager.adapter = adapter
 

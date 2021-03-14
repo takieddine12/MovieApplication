@@ -11,6 +11,7 @@ import taki.eddine.myapplication.datamodels.MovieResultItem
 import taki.eddine.myapplication.network.ApiInterface
 import taki.eddine.myapplication.rooom.moviesdaos.PopularMoviesDao
 import timber.log.Timber
+import java.util.concurrent.atomic.AtomicBoolean
 
 class NowPlayingBoundaryCallback(private var compositeDisposable: CompositeDisposable,
         private var popularDao: PopularMoviesDao, var context: Context, var apiInterface: ApiInterface
@@ -35,6 +36,7 @@ class NowPlayingBoundaryCallback(private var compositeDisposable: CompositeDispo
 
     @SuppressLint("CheckResult")
     private fun getNowPlayingMovies() {
+
         apiInterface.getNowPlaying(BuildConfig.MoviesApiKey,
                 Extras.getLanguageCode(context), getCurrentKey(context))
                 ?.toObservable()
@@ -50,6 +52,7 @@ class NowPlayingBoundaryCallback(private var compositeDisposable: CompositeDispo
                         movieResultItem.uniqueIdentifier = Extras.NOWPLAY_VALue
                         popularDao.insertPopularMovies(movieResultItem)
                     }
+
                 }, {
                     Timber.d("Now Playing Movies Exception ${it.message}")
                 })

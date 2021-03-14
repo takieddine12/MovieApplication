@@ -77,18 +77,10 @@ class PopularMoviesFragment : Fragment() {
                         }
                         is SUCCESS -> {
                             binding.spinKit.visibility = View.INVISIBLE
-                            it.data.observe(viewLifecycleOwner, Observer { liveData ->
-                                liveData?.let {
-                                    it.filter {
-                                        if(it?.title == "Breach"){
-                                            return@filter true
-                                        }
-                                        return@filter false
-                                    }
-                                    adapter!!.submitList(liveData)
-                                    binding.popularRecycler.adapter = adapter
-                                }
-                            })
+                            it.data.subscribe { liveData ->
+                                adapter!!.submitList(liveData)
+                                binding.popularRecycler.adapter = adapter
+                            }
                         }
                         is ERROR -> {
                             binding.spinKit.visibility = View.INVISIBLE

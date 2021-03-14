@@ -65,13 +65,12 @@ class UpcomingMoviesFragment : Fragment() {
                            binding.spinKit.visibility = View.VISIBLE
                        }
                        is SUCCESS -> {
+                           Timber.d("Code is called Here..")
                            binding.spinKit.visibility = View.INVISIBLE
-                           it.data.observe(viewLifecycleOwner, Observer { liveData ->
+                           it.data.subscribe { liveData ->
                                adapter!!.submitList(liveData)
-
-                           })
+                           }
                            binding.upcomingRecycler.adapter = adapter
-
                        }
                        is ERROR -> {
                            binding.spinKit.visibility = View.INVISIBLE
@@ -90,7 +89,6 @@ class UpcomingMoviesFragment : Fragment() {
            })
        }
     }
-
     override fun onDestroy() {
         super.onDestroy()
         _binding = null

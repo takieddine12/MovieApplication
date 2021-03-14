@@ -26,7 +26,6 @@ class SplashScreen : AppCompatActivity() {
 
         CoroutineScope(Dispatchers.Main).launch {
             delay(3000)
-            binding.progressBar.visibility  = View.GONE
             Intent(this@SplashScreen, MainActivity::class.java).apply {
                 startActivity(this)
                 finish()

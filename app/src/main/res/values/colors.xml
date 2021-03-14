@@ -14,4 +14,5 @@
     <color name="boxColor">#000000</color>
     <color name='linkIconColor'>#000000</color>
     <color name="dialogTitle">#000000</color>
+    <color name="creditsDivider">#000000</color>
 </resources>

@@ -65,10 +65,10 @@ class NowPlayingMoviesFragment : Fragment() {
                         LOADING -> {
                         }
                         is SUCCESS -> {
-                            it.data.observe(viewLifecycleOwner, Observer { liveData ->
+                            it.data.subscribe { liveData ->
                                 adapter!!.submitList(liveData)
                                 binding.nowMoviesRecycler.adapter = adapter
-                            })
+                            }
                         }
                         is ERROR -> {
                             Timber.d("Exception ${it.exception}")

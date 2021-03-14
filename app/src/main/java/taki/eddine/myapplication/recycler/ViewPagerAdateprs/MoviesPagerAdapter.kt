@@ -24,4 +24,8 @@ class MoviesPagerAdapter(fm : FragmentManager,behaviour : Int) : FragmentPagerAd
         }
         return PopularMoviesFragment()
     }
+
+    override fun getItemPosition(`object`: Any): Int {
+        return  POSITION_NONE
+    }
 }

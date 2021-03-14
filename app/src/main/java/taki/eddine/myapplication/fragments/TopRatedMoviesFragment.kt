@@ -67,10 +67,10 @@ class TopRatedMoviesFragment : Fragment() {
                         }
                         is SUCCESS -> {
                             binding.spinKit.visibility = View.INVISIBLE
-                            it.data.observe(viewLifecycleOwner, Observer { liveData ->
+                            it.data.subscribe { liveData ->
                                 adapter!!.submitList(liveData)
                                 binding.topRatedRecycle.adapter = adapter
-                            })
+                            }
 
                         }
                         is ERROR -> {

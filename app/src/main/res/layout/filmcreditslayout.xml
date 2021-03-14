@@ -36,7 +36,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:background="@android:color/black"
+                android:background="@color/creditsDivider"
                 app:layout_constraintBottom_toTopOf="@+id/guideline32"
                 app:layout_constraintEnd_toStartOf="@+id/guideline39"
                 app:layout_constraintHorizontal_bias="0.0"
